@@ -15,7 +15,7 @@ const Table = () => {
             "page": `${page}`,
             "limit": "10"
         }).then(function (response) {
-            // console.log(response);
+            console.log(response);
             setStudents(response.data.data)
         }).catch(function (error) {
             console.log(error);
@@ -43,6 +43,11 @@ const Table = () => {
         {
             name: 'Mobile',
             selector: row => row.mobile_number,
+            sortable: true,
+        },
+        {
+            name: 'Date of Birth',
+            selector: row => row.dob,
             sortable: true,
         },
         {
@@ -100,6 +105,7 @@ const Table = () => {
                     section: element.student.section,
                     className: element.student.class_name,
                     campus: element.campus,
+                    dob: element.student.dob
                 })
             })
         }
