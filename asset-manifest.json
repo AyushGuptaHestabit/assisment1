@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/assisment1/static/css/main.4a8d74c7.css",
-    "main.js": "/assisment1/static/js/main.35999029.js",
-    "static/js/787.39fefad0.chunk.js": "/assisment1/static/js/787.39fefad0.chunk.js",
-    "index.html": "/assisment1/index.html",
-    "main.4a8d74c7.css.map": "/assisment1/static/css/main.4a8d74c7.css.map",
-    "main.35999029.js.map": "/assisment1/static/js/main.35999029.js.map",
-    "787.39fefad0.chunk.js.map": "/assisment1/static/js/787.39fefad0.chunk.js.map"
+    "main.css": "/ayushguptahestabit.github.io/assisment1/static/css/main.4a8d74c7.css",
+    "main.js": "/ayushguptahestabit.github.io/assisment1/static/js/main.d10a61a2.js",
+    "static/js/787.39fefad0.chunk.js": "/ayushguptahestabit.github.io/assisment1/static/js/787.39fefad0.chunk.js",
+    "index.html": "/ayushguptahestabit.github.io/assisment1/index.html",
+    "main.4a8d74c7.css.map": "/ayushguptahestabit.github.io/assisment1/static/css/main.4a8d74c7.css.map",
+    "main.d10a61a2.js.map": "/ayushguptahestabit.github.io/assisment1/static/js/main.d10a61a2.js.map",
+    "787.39fefad0.chunk.js.map": "/ayushguptahestabit.github.io/assisment1/static/js/787.39fefad0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4a8d74c7.css",
-    "static/js/main.35999029.js"
+    "static/js/main.d10a61a2.js"
   ]
 }
