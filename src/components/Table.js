@@ -39,6 +39,8 @@ const Table = () => {
     const [classs, setclasss] = useState('');
     const [sections, setSections] = useState([]);
     const [section, setSection] = useState('');
+    const [limit, setLimit] = useState(10);
+    const [totalResults, setTotalResults] = useState(0);
 
     function openModal() {
         setIsOpen(true);
@@ -51,10 +53,21 @@ const Table = () => {
     const getStudents = async () => {
         axios.post('https://mtml-api.hestawork.com/api/user/filter-students', {
             "page": `${page}`,
-            "limit": "10"
+            "limit": `${limit}`
         }).then(function (response) {
             // console.log(response);
             setStudents(response.data.data)
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
+    const getAllStudents = async () => {
+        axios.post('https://mtml-api.hestawork.com/api/user/filter-students', {
+            "page": `1`,
+            "limit": `1000`
+        }).then(function (response) {
+            setTotalResults(response.data.data.docs.length);
         }).catch(function (error) {
             console.log(error);
         });
@@ -182,9 +195,9 @@ const Table = () => {
             name: 'Action',
             selector: row =>
                 <>
-                    <Link to={'/edit/' + row.id} data-tip="Edit data on the next page" className="btn btn-sm">
+                    {/* <Link to={'/edit/' + row.id} data-tip="Edit data on the next page" className="btn btn-sm">
                         <img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" />
-                    </Link>
+                    </Link> */}
                     <button onClick={() => editStudent(row.id)} data-tip="Edit data on the same page" className="btn btn-sm">
                         <img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/30/000000/external-edit-interface-kiranshastry-lineal-kiranshastry-1.png" />
                     </button>
@@ -199,8 +212,9 @@ const Table = () => {
 
     useEffect(() => {
         getStudents();
+        getAllStudents();
         getClasses();
-    }, [page])
+    }, [page, limit])
 
     useEffect(() => {
         const rows = [];
@@ -230,8 +244,18 @@ const Table = () => {
 
     return (
         <>
+            {/* <ReactTooltip /> */}
+            <div className='row p-3'>
+                <div className='col-2 d-flex'>
+                    <label className='text-success font-weight-bold' htmlFor="">Results per page</label>
+                    <select className='form-control' onChange={(e) => setLimit(e.target.value)}>
+                        <option selected>10</option>
+                        <option>20</option>
+                        <option>50</option>
+                    </select>
+                </div>
+            </div>
             <div className='row my-2' style={{ minHeight: "60vh" }}>
-                <ReactTooltip />
                 {students ?
                     <DataTable
                         columns={columns}
@@ -247,7 +271,8 @@ const Table = () => {
                 }
             </div>
             <div className='row my-2'>
-                <div className='d-flex justify-content-end'>
+                <p className='text-muted col-3'>Showing {limit > totalResults ? totalResults : limit} of total {totalResults} Results</p>
+                <div className=' col-9 d-flex justify-content-end'>
                     {students &&
                         <>
                             {[...Array(students.pages)].map((x, i) =>
@@ -340,7 +365,7 @@ const Table = () => {
                             </div>
                         </div>
                         <input type='submit' className={`btn btn-success ${fname && lname && email && mobile && campus && studentId && classs && section ? '' : 'disabled'}`} />
-                        <Link to={'/'} className='btn border border-danger text-danger mx-2'>Cancel</Link>
+                        <button onClick={closeModal} className='btn border border-danger text-danger mx-2'>Cancel</button>
                     </form>
                 </div>
             </Modal >

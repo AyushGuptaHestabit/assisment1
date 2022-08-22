@@ -18,10 +18,11 @@ function App() {
             Student Management
           </div>
         </div>
-        <Routes>
+        <HomeView />
+        {/* <Routes>
           <Route exact path="/" element={<HomeView />} />
           <Route path="/edit/:id" element={<EditView />} />
-        </Routes>
+        </Routes> */}
       </div>
     </div>
   );

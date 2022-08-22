@@ -1,5 +1,4 @@
 {
-  "homepage": "http://AyushGuptaHestabit.github.io/assisment1",
   "name": "assisment1",
   "version": "0.1.0",
   "private": true,
@@ -8,6 +7,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-data-table-component": "^7.5.2",
     "react-dom": "^18.2.0",
